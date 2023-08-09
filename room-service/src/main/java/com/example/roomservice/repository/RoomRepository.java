@@ -1,10 +1,9 @@
-package uz.pdp.roomservice.repository;
+package com.example.roomservice.repository;
 
-import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import uz.pdp.roomservice.domain.entity.RoomEntity;
-import uz.pdp.roomservice.domain.entity.RoomType;
+import com.example.roomservice.domain.entity.RoomEntity;
+import com.example.roomservice.domain.entity.RoomType;
 
 import java.util.List;
 import java.util.Optional;

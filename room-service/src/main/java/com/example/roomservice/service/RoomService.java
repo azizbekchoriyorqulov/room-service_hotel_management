@@ -1,13 +1,13 @@
-package uz.pdp.roomservice.service;
+package com.example.roomservice.service;
 
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-import uz.pdp.roomservice.domain.dto.RoomRequestDto;
-import uz.pdp.roomservice.domain.entity.RoomEntity;
-import uz.pdp.roomservice.domain.entity.RoomType;
-import uz.pdp.roomservice.exaption.DataNotFoundException;
-import uz.pdp.roomservice.repository.RoomRepository;
+import com.example.roomservice.domain.dto.RoomRequestDto;
+import com.example.roomservice.domain.entity.RoomEntity;
+import com.example.roomservice.domain.entity.RoomType;
+import com.example.roomservice.exaption.DataNotFoundException;
+import com.example.roomservice.repository.RoomRepository;
 
 import java.util.List;
 import java.util.UUID;

@@ -1,16 +1,13 @@
-package uz.pdp.roomservice.controller;
+package com.example.roomservice.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import uz.pdp.roomservice.domain.dto.RoomRequestDto;
-import uz.pdp.roomservice.domain.entity.RoomType;
-import uz.pdp.roomservice.service.RoomService;
-
+import com.example.roomservice.domain.dto.RoomRequestDto;
+import com.example.roomservice.domain.entity.RoomType;
+import com.example.roomservice.service.RoomService;
 
 import java.util.UUID;
-
-import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 @RequestMapping("room/api/v1")
 @RequiredArgsConstructor

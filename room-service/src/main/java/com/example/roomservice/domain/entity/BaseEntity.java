@@ -1,4 +1,4 @@
-package uz.pdp.roomservice.domain.entity;
+package com.example.roomservice.domain.entity;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -7,7 +7,6 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-
 
 import java.time.LocalDateTime;
 import java.util.UUID;

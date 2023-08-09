@@ -1,10 +1,10 @@
-package uz.pdp.roomservice.domain.dto;
+package com.example.roomservice.domain.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import uz.pdp.roomservice.domain.entity.RoomType;
+import com.example.roomservice.domain.entity.RoomType;
 
 import java.util.List;
 

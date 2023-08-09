@@ -1,11 +1,10 @@
-package uz.pdp.roomservice.domain.entity;
+package com.example.roomservice.domain.entity;
 
 
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @Entity
 @Table(name = "rooms")
