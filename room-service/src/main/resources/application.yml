@@ -12,9 +12,10 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+    show-sql: true
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.PostgreSQL94Dialect
+        format_sql: true
 
 host: ${HOST:http://localhost}
 services:
@@ -30,3 +31,7 @@ eureka:
 jwt:
   secret:
     key: 753778214125442A472D4B6150645367566B59703373367639792F423F452848
+    access:
+      expiry: 3000000
+    refresh:
+      expiry: 300000000

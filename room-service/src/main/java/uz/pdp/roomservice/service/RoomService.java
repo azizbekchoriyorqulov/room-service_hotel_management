@@ -22,8 +22,9 @@ public class RoomService {
        RoomEntity room=modelMapper.map(roomRequestDto ,RoomEntity.class);
       return roomRepository.save(room);
    }
-   public List<RoomEntity> getAll(RoomType type){
-      return roomRepository.findByTypes(type);
+   public List<RoomEntity> getByTypeOfHotel(String type, UUID hotelId){
+
+      return roomRepository.findByTypesAndHotel_id(type, hotelId);
    }
    public RoomEntity update(RoomRequestDto update, UUID roomId){
       RoomEntity room = roomRepository.findById(roomId).orElseThrow(()-> new DataNotFoundException("Room not found"));
@@ -40,12 +41,21 @@ public class RoomService {
        modelMapper.map(newRoom,room);
        return roomRepository.save(newRoom);
    }
-   public void deleteBySize(String size){
-      roomRepository.delete(roomRepository.findBySize(size).orElseThrow(()-> new DataNotFoundException("Room not found by size")));
+
+   public String deleteByIdAndHotelId(UUID roomId, UUID hotelId){
+      RoomEntity room = roomRepository.findRoomEntitiesByHotel_idAndId(hotelId,roomId)
+              .orElseThrow(()->new DataNotFoundException("Room or Hotel not found"));
+      roomRepository.deleteByIdAndHotel_id(roomId, hotelId);
+      return "OK";
    }
-   public void isActive(UUID id){
-      RoomEntity room=roomRepository.findById(id).orElseThrow(()->  new DataNotFoundException("Room not found"));
-      room.setIsActive(true);
+   public void isActive(UUID roomId, UUID hotelId, Boolean isActive){
+      RoomEntity room=roomRepository.findRoomEntitiesByHotel_idAndId(hotelId,roomId).orElseThrow(()->  new DataNotFoundException("Room not found"));
+      room.setIsActive(isActive);
       roomRepository.save(room);
    }
+
+   public List<RoomEntity> getByActives(UUID hotelId, Boolean isActive){
+      return roomRepository.findRoomEntitiesByHotel_idAndIsActive(hotelId, isActive);
+   }
+
 }
