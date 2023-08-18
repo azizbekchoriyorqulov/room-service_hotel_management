@@ -6,7 +6,6 @@ import io.jsonwebtoken.Jwts;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Service;
-
 import java.util.Collection;
 import java.util.List;
 
@@ -20,8 +19,8 @@ public class JwtService {
         return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token);
     }
 
-    private List<String> getAuthorities(Collection<? extends GrantedAuthority> authorities) {
-        return authorities.stream()
+    private List<String> getRoles(Collection<? extends GrantedAuthority> roles) {
+        return roles.stream()
                 .map(GrantedAuthority::getAuthority)
                 .toList();
     }

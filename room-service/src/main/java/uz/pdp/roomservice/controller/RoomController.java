@@ -6,13 +6,11 @@ import org.springframework.web.bind.annotation.*;
 import uz.pdp.roomservice.domain.dto.RoomRequestDto;
 import uz.pdp.roomservice.domain.entity.RoomEntity;
 import uz.pdp.roomservice.service.RoomService;
-
 import java.util.List;
 import java.util.UUID;
-
+@RestController
 @RequestMapping("room/api/v1")
 @RequiredArgsConstructor
-@RestController
 public class RoomController {
     private final RoomService roomService;
 
@@ -34,9 +32,8 @@ public class RoomController {
         return ResponseEntity.ok(roomService.update(roomRequestDto, id));
     }
 
-
     @GetMapping("{id}/byActives")
-    public ResponseEntity<List<RoomEntity>> hotelActives(@PathVariable UUID hotelId, @RequestParam Boolean isActive) {
+    public ResponseEntity<List<RoomEntity>> hotelActives(@PathVariable UUID hotelId, @RequestParam Boolean isActive, @PathVariable String id) {
         return ResponseEntity.ok(roomService.getByActives(hotelId,isActive));
     }
 

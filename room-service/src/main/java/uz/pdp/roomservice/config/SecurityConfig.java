@@ -21,14 +21,15 @@ import uz.pdp.roomservice.service.jwt.JwtService;
 public class SecurityConfig {
     private final AuthenticationService authenticationService;
     private final JwtService jwtService;
-    //public String[] roomController = n
+    private final String[] roomController = {"/room/api/v1/**"};
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .csrf().disable()
                 .authorizeHttpRequests((authorize) -> {
-                    authorize.anyRequest().permitAll();
+                    authorize.
+                            requestMatchers(roomController).authenticated();
                 })
                 .sessionManagement((session) -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(new JwtTokenFilter(authenticationService, jwtService),

@@ -13,14 +13,12 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
-import org.springframework.web.filter.OncePerRequestFilter;
-import uz.pdp.roomservice.service.jwt.JwtService;
-
-import java.io.IOException;
+import org.springframework.stereotype.Service;
 import java.util.List;
 
 
 @AllArgsConstructor
+@Service
 public class AuthenticationService {
     public void authenticate(Claims claims, HttpServletRequest request)throws JsonProcessingException {
         List<String> roles = (List<String>) claims.get("roles");

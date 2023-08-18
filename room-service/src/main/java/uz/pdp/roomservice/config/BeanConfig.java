@@ -8,9 +8,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.client.RestTemplate;
+import uz.pdp.roomservice.service.auth.AuthenticationService;
 
 @Configuration
 public class BeanConfig {
+    
     @Bean
     @LoadBalanced
     public RestTemplate restTemplate() {

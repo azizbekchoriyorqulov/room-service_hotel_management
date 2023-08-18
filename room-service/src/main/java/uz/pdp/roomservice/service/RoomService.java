@@ -5,7 +5,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import uz.pdp.roomservice.domain.dto.RoomRequestDto;
 import uz.pdp.roomservice.domain.entity.RoomEntity;
-import uz.pdp.roomservice.domain.entity.RoomType;
 import uz.pdp.roomservice.exaption.DataNotFoundException;
 import uz.pdp.roomservice.repository.RoomRepository;
 
@@ -24,7 +23,7 @@ public class RoomService {
    }
    public List<RoomEntity> getByTypeOfHotel(String type, UUID hotelId){
 
-      return roomRepository.findByTypesAndHotel_id(type, hotelId);
+      return roomRepository.findByTypesAndHotelId(type, hotelId);
    }
    public RoomEntity update(RoomRequestDto update, UUID roomId){
       RoomEntity room = roomRepository.findById(roomId).orElseThrow(()-> new DataNotFoundException("Room not found"));
@@ -43,19 +42,19 @@ public class RoomService {
    }
 
    public String deleteByIdAndHotelId(UUID roomId, UUID hotelId){
-      RoomEntity room = roomRepository.findRoomEntitiesByHotel_idAndId(hotelId,roomId)
+      RoomEntity room = roomRepository.findRoomEntitiesByHotelIdAndId(hotelId,roomId)
               .orElseThrow(()->new DataNotFoundException("Room or Hotel not found"));
-      roomRepository.deleteByIdAndHotel_id(roomId, hotelId);
+      roomRepository.deleteByIdAndHotelId(roomId, hotelId);
       return "OK";
    }
-   public void isActive(UUID roomId, UUID hotelId, Boolean isActive){
-      RoomEntity room=roomRepository.findRoomEntitiesByHotel_idAndId(hotelId,roomId).orElseThrow(()->  new DataNotFoundException("Room not found"));
+ public void isActive(UUID roomId, UUID hotelId, Boolean isActive){
+      RoomEntity room=roomRepository.findRoomEntitiesByHotelIdAndId(hotelId,roomId).orElseThrow(()->  new DataNotFoundException("Room not found"));
       room.setIsActive(isActive);
       roomRepository.save(room);
    }
 
    public List<RoomEntity> getByActives(UUID hotelId, Boolean isActive){
-      return roomRepository.findRoomEntitiesByHotel_idAndIsActive(hotelId, isActive);
+      return roomRepository.findRoomEntitiesByHotelIdAndIsActive(hotelId, isActive);
    }
 
 }

@@ -13,8 +13,8 @@ import java.util.UUID;
 public interface RoomRepository extends JpaRepository<RoomEntity , UUID> {
     Optional<RoomEntity> findBySize(String size);
     Optional<RoomEntity> findById(UUID uuid);
-    Optional<RoomEntity> findRoomEntitiesByHotel_idAndId(UUID hotelId, UUID roomId);
-    List<RoomEntity> findRoomEntitiesByHotel_idAndIsActive(UUID hotelId, boolean activeStatus);
-    void deleteByIdAndHotel_id(UUID roomId, UUID hotelId);
-    List<RoomEntity> findByTypesAndHotel_id (String type, UUID id);
+    Optional<RoomEntity> findRoomEntitiesByHotelIdAndId(UUID hotelId, UUID roomId);
+    List<RoomEntity> findRoomEntitiesByHotelIdAndIsActive(UUID hotelId, boolean activeStatus);
+    void deleteByIdAndHotelId(UUID roomId, UUID hotelId);
+    List<RoomEntity> findByTypesAndHotelId (String type, UUID id);
 }
